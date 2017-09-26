@@ -1,0 +1,98 @@
+# Materials
+
+void plastic red_plastic
+0
+0
+5 .7 .1 .1 .06 .1
+
+void metal steel
+0
+0
+5 0.6 0.62 0.68 1 0
+
+void metal gold
+0
+0
+5 0.75 0.55 0.25 0.85 0.2
+
+void plastic white_matte
+0
+0
+5 .8 .8 .8 0 0
+
+void dielectric crystal
+0
+0
+5 .5 .5 .5 1.5 0
+
+void plastic black_matte
+0
+0
+5 .02 .02 .02 .00 .00
+
+void plastic gray_plastic
+0
+0
+5 0.25 0.25 0.25 0.06 0.0
+
+# Objects
+
+red_plastic sphere ball0
+0
+0
+4 2 0.5 2 0.5
+
+steel sphere ball1
+0
+0
+4 2 0.5 -2 0.5
+
+gold sphere ball2
+0
+0
+4 -2 0.5 -2 0.5
+
+white_matte sphere ball3
+0
+0
+4 -2 0.5 2 0.5
+
+crystal sphere ball4
+0
+0
+4 0 1 0 1
+
+!genworm black_matte twist "cos(2*PI*t)*(1+0.1*cos(30*PI*t))" "0.06+0.1+0.1*sin(30*PI*t)" "sin(2*PI*t)*(1+0.1*cos(30*PI*t))" "0.06" 200 | xform -s 1.1 -t 2 0 2 -a 4 -ry 90 -i 1
+
+!genbox gray_plastic pedestal_top 8 0.5 8 -r 0.08 | xform -t -4 -0.5 -4
+ 
+!genbox gray_plastic pedestal_shaft 6 16 6 | xform -t -3 -16.5 -3
+
+# Traditional Light Source
+
+void light lightcolor
+0
+0
+3 10000 10000 10000
+
+#lightcolor source lightsource
+#0
+#0
+#4 1 1 1 2
+
+# Image-Based Lighting Environment
+
+void colorpict hdr_probe_image
+7 red green blue campus_probe.hdr angmap.cal u v
+0
+0
+
+hdr_probe_image glow light_probe
+0
+0
+4 1 1 1 0
+
+light_probe source ibl_environment
+0
+0
+4 0 1 0 360

@@ -1,0 +1,17 @@
+{
+angmap.cal
+Convert from directions in the world \
+(Dx, Dy, Dz) into (u,v) \
+coordinates on the light probe \
+image
+-z is forward (outer edge of sphere)
++z is backward (center of sphere)
++y is up (toward top of sphere)
+}
+
+d = sqrt(Dx*Dx + Dy*Dy);
+
+r = if(d, 0.159154943*acos(Dz)/d, 0);
+
+u = 0.5 + Dx * r;
+v = 0.5 + Dy * r;
