@@ -83,7 +83,7 @@ void light lightcolor
 # Image-Based Lighting Environment
 
 void colorpict hdr_probe_image
-7 red green blue new.tiff angmap.cal u v
+7 red green blue new_probe2.hdr angmap.cal u v
 0
 0
 
